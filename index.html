@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pe&#x15F;&#x259; Se&#xE7;imind&#x259; D&#x259;st&#x259;k Testi</title>
+    <link rel="stylesheet" href="/peshe/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/peshe/css/gin_site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a href="https://www.dim.gov.az/" class="navbar-brand" target="_blank">
+                    <img src="http://exam23.eu-central-1.elasticbeanstalk.com/peshe/img/dim_logo.png" 
+                        height="70px" />
+                </a>
+                <div class="navbar-collapse collapse d-sm-inline-flex  justify-content-center">
+                    <a href="/peshe/GINExam" class="telim-header-link">
+                        <h2>PEŞƏ SEÇİMİNDƏ DƏSTƏK TESTİ</h2>
+                    </a>
+                </div>
+                <div class="sub-button" id="login-part" style="display:none;">
+                    <a href="/peshe/GINExam/Login" class="login-button">
+                        <span>GİRİŞ</span>
+                    </a>
+                </div>
+                <div class="sub-button" id="logout-part" style="display:none;">
+                    <img id="user-image" class="user-logo" />
+                    <button onclick="logout()" class="btn btn-link" <span>Çıxış</span>
+                    </button>
+                </div>
+
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="billboard-banner">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="billboard-banner-content-box">
+                            <h4 class="content-h1">Dövlət İmtahan Mərkəzi tərəfindən keçirilən <br /> Peşə Seçimində
+                                Dəstək
+                                Testləri</h4>
+                            <p class="text-md">
+                                Sizə peşə seçimində dəstək testi təqdim olunur. Test dörd blokdan ibarətdir: təfəkkür
+                                növləri,
+                                motivasiya,
+                                şəxsi xüsusiyyətlər və peşə maraqları. Testi keçdikdən sonra həm Sizin müvafiq
+                                xüsusiyyətləriniz
+                                təsvir
+                                olunacaq, həm Sizə uyğun top 10 peşə tədqim olunacaqdır. Hər bir test haqqında məlumat
+                                aşağıda
+                                təqdim
+                                olunub. <b>Testə başlamaq üçün <span style="color:rgb(35, 138, 21)">“Başla”</span> düyməsini
+                                    klikləyin.</b>
+                            </p>
+
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+                        <img class="billboard-img" height="150px" src="./undraw_experts_re_i40h.svg" />
+                        <img class="billboard-img" height="200px" src="./undraw_processing_re_tbdu.svg">
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="iq-tab" data-bs-toggle="tab" data-bs-target="#iq-tab-pane"
+                        type="button" role="tab" aria-controls="iq-tab-pane" aria-selected="true">Təfəkkür
+                        testi</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="motiv-tab" data-bs-toggle="tab" data-bs-target="#motiv-tab-pane"
+                        type="button" role="tab" aria-controls="motiv-tab-pane" aria-selected="false">Motivasiya
+                        testi</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="person-tab" data-bs-toggle="tab" data-bs-target="#person-tab-pane"
+                        type="button" role="tab" aria-controls="person-tab-pane" aria-selected="false">Şəxsi
+                        xüsusiyyətlər testi</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="peshe-tab" data-bs-toggle="tab" data-bs-target="#peshe-tab-pane"
+                        type="button" role="tab" aria-controls="peshe-tab-pane" aria-selected="false">Peşə maraqları
+                        testi</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="result-tab" data-bs-toggle="tab" data-bs-target="#result-tab-pane"
+                        type="button" role="tab" aria-controls="peshe-tab-pane" aria-selected="false">Nəticələr</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="iq-tab-pane" role="tabpanel" aria-labelledby="iq-tab"
+                    tabindex="0">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold" style="line-height: 1.5;">Təfəkkür testi</div>
+                                İştirakçının üstünlük təşkil edən təfəkkür növləri müəyyən olunur. Test üç blokdan
+                                ibarətdir:
+                                <br />
+                                <ol>
+                                    <li>Verbal-məntiqi təfəkkür (analogiyalar, istisnalar, ümumiləşdirmə, uyğunluq,
+                                        sillogizimlər
+                                        şkalalarından ibarətdir);</li>
+                                    <li>Riyazi-məntiqi təfəkkür (riyazi məsələlər, ədədlər sırası şkalalarından
+                                        ibarətdir);</li>
+                                    <li>Fəza təfəkkürü (fəza ümumiləşdirməsi, fəza təxəyyülü, verbal-fəza təfəkkürü
+                                        şkalalarından
+                                        ibarətdir).</li>
+                                </ol>
+
+                                Hər bir şkalanın təsviri və nümunələr suallardan öncə təqdim olunacaqdır.
+                                <br />
+                                <br />
+                                <b>Ümumilikdə test 108 sualdan ibarətdir.</b>
+                                <br />
+                                <br />
+                                <button id="t1" data-url="" class="login-button"
+                                    onclick="startExam(1,1,'/peshe/GINTestExam/CheckUser?c=1&amp;b=1')">Başla</button>
+                                <br />
+                                <br />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="person-tab-pane" role="tabpanel" aria-labelledby="person-tab"
+                    tabindex="0">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Şəxsi xüsusiyyətlər testi</div>
+                                Testin nəticələri şəxsin hansı xüsusiyyətlərə malik olduğunu göstərir. Testdə
+                                qiymətləndirilən
+                                xüsusiyyətlər: emosional sabitlik, yeniliyə açıqlıq, özünü idarəetmə, empatiya,
+                                liderlik, riskə
+                                hazırlıq, emosionallıq, səmimilik, çeviklik.
+                                <br />
+                                <br />
+                                <b>Test 70 sualdan ibarətdir.</b>
+                                <br />
+                                <br />
+                                <button id="t2" data-url="" class="login-button"
+                                    onclick="startExam(2,11,'/peshe/GINTestExam/CheckUser?c=2&amp;b=11')">Başla</button>
+                                <br />
+                                <br />
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="motiv-tab-pane" role="tabpanel" aria-labelledby="motiv-tab" tabindex="0">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Motivasiya testi</div>
+                                Oxuma motivasiyasının növü müəyyən edilir. Testin əsasında üç motivasiya növü dayanır:
+                                daxili
+                                motivasiya, xarici avtonom motivasiya, xarici idarəolunan motivasiya. Motivasiya növünün
+                                müəyyən
+                                edilməsi insanı öyrənmə fəaliyyətinə nəyin sövq etdiyini anlamağa kömək edir.
+                                <br />
+                                <br />
+                                <b>Ümumilikdə test 18 sualdan ibarətdir.</b>
+                                <br />
+                                <br />
+                                <button id="t3" data-url="" class="login-button"
+                                    onclick="startExam(3,12,'/peshe/GINTestExam/CheckUser?c=3&amp;b=1')">Başla</button>
+                                <br />
+                                <br />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="peshe-tab-pane" role="tabpanel" aria-labelledby="peshe-tab" tabindex="0">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Peşə maraqları testi</div>
+                                Test 18 fəaliyyət istiqaməti və 3 fəaliyyət növü arasında istifadəçidə aparıcı istiqamət
+                                və növü
+                                müəyyən etməyə yönəlmişdir.
+                                <br />
+                                <br />
+                                <b>Ümumilikdə test 90 sualdan ibarətdir.</b>
+                                <br />
+                                <br />
+                                <button id="t4" data-url="" class="login-button"
+                                    onclick="startExam(4,13,'/peshe/GINTestExam/CheckUser?c=4&amp;b=13')">Başla</button>
+                                <br />
+                                <br />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="result-tab-pane" role="tabpanel" aria-labelledby="result-tab"
+                    tabindex="0">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Nəticələr</div>
+                                İmtahan nəticəsində uyğun hesab olunan 5-10 peşədən ibarət siyahı təqdim olunur.<br />
+                                Daha sonra isə hər test üzrə müvafiq geri bildirimlər verilir.
+                                <br />
+
+                                <button id="get-netice" class="login-button mt-4"
+                                    onclick="getUserNetice('/peshe/GINExam/CheckForNetice')">Nəticələrə bax</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+        </main>
+    </div>
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="xeberdarliq" tabindex="-1"
+        role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xəbərdarlıq</h5>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bağla</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/peshe/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/peshe/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/peshe/js/gin_site.js"></script>
+
+    <script type="text/javascript">
+        window.onload = (event) => {
+            const user = JSON.parse(sessionStorage.getItem("user"));
+            if (user) {
+                document.getElementById('login-part').style.display = "none";
+                document.getElementById('logout-part').style.display = "block";
+                document.getElementById('user-image').src = `data:image/png;base64,${user.userInfo.UserImage}`;
+            } else {
+                document.getElementById('login-part').style.display = "block";
+                document.getElementById('logout-part').style.display = "none";
+            }
+        };
+    </script>
+
+    <script>
+        function logout() {
+            sessionStorage.clear();
+            document.cookie = 'token=; Max-Age=0; path=/;'; //domain=' + location.hostname;
+            window.location.href = '/peshe/GINExam'
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem&#x259; giri&#x15F;</title>
+    <link rel="stylesheet" href="/peshe/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/peshe/css/gin_site.css?v=Qvo4ACp-il-XWT1GZ-X5i_fgRqhkmK3R9mUm8-o7Nyo" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a href="https://www.dim.gov.az/" class="navbar-brand" target="_blank">
+                    <img src="http://exam23.eu-central-1.elasticbeanstalk.com/peshe/img/dim_logo.png" 
+                        height="70px" />
+                </a>
+                <div class="navbar-collapse collapse d-sm-inline-flex  justify-content-center">
+                     <a href="/peshe/GINExam" class="telim-header-link">
+                           <h2>PEŞƏ SEÇİMİNDƏ DƏSTƏK TESTİ</h2>
+                        </a>
+                </div>
+                <div class="sub-button" id="login-part" style="display:none;">
+    <a href="/peshe/GINExam/Login" class="login-button">
+        <span>GİRİŞ</span>
+    </a>
+</div>
+<div class="sub-button" id="logout-part" style="display:none;">
+    <img id="user-image" class="user-logo" />
+    <button onclick="logout()" class="btn btn-link"
+        <span>Çıxış</span>
+    </button>
+</div>
+
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="loginbox">
+    <div class="loginbox-header">Hesabınıza daxil olun</div>
+    <div class="loginbox-content">
+        <form name="login-form" action="/peshe/GINExam/Login" method="post">
+            <div class="manage-fields">
+                <div class="form-field-container">
+                    <label for="user-name"></label>
+                    <div>
+                        <input id="user-name" required maxlength="64" minlength="7" 
+                               placeholder="İştifadəçi adı" type="text" class="form-control" autocomplete="off" readonly
+                               onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','true');">
+                    </div>
+                </div>
+                <div>
+                    <label for="password"></label>
+                    <div>
+                        <input id="password" required maxlength="64" minlength="6" placeholder="Şifrə" 
+                               type="password" class="form-control" autocomplete="off" readonly
+                               onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','true');">
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="submit-row">
+                    <button type="button" class="common-btn btn-primary" onclick="checkAndLogin()">Daxil ol</button>
+                    <div>
+
+                        <br />
+                        <a href="http://ekabinet.dim.gov.az/" target="_blank" style="color:red;font-weight:bold;">
+                            YENİ
+                            İSTİFADƏÇİNİN QEYDİYYATI
+                        </a><br />
+                        <a href="http://ekabinet.dim.gov.az/" target="_blank">Parolu unutmuşam</a>
+                        <br />
+                        <a href="/peshe/GINExam/Payment" target="_blank">Hesabın artırılması</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+        </main>
+    </div>
+
+   
+
+  
+
+<!-- Modal -->
+<div class="modal hide fade in" data-keyboard="false" data-backdrop="static" id="xeberdarliq" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xəbərdarlıq</h5>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bağla</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script src="/peshe/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/peshe/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/peshe/js/gin_site.js?v=QNHlgiVW0jJo51EcuMA5DO8MFFTDYZrN0xxOnNykk4g"></script>
+    
+<script type="text/javascript">
+           async function   checkAndLogin(e) {
+           
+                const tokenURL = "/peshe/GINExam/CreateToken";
+                //const localURL = "http://localhost:44353";
+                const hostingURL = "https://exidmet.dim.gov.az/oen";
+                let serverURL = hostingURL;
+                const inputUsername = document.getElementById("user-name");
+                const inputPassword = document.getElementById("password");
+                if (inputUsername.value == "" || inputPassword.value == "") {
+                    document.querySelector(".modal-body").innerHTML="İstifadəçi adı və ya şifrə səhvdir";
+                    $('#xeberdarliq').modal('show');
+                    //alert("İstifadəçi adı və ya şifrə səhvdir 1!");
+                    return;
+                }
+                //if (inputUsername.value.length != 7) {
+                //    alert("***İstifadəçi adı və ya şifrə səhvdir 2!");
+                //    return;
+                //}
+                //const urlApi = new URL(serverURL+'/api/Exam23/Login');
+                const urlApi = new URL(serverURL+'/api/Exam23/Login');
+                const userData = { userName: inputUsername.value, password: inputPassword.value };
+                const tokenData = { UserName: inputUsername.value, UserPassword: inputPassword.value };
+                urlApi.search = new URLSearchParams(userData).toString();
+                const resp = await fetch(urlApi,{ method: "POST"});
+                if (resp.status==200){
+                     resp.json()
+                                .then(x=>{
+                                    if(x.message){
+                                         document.querySelector(".modal-body").innerHTML = x.message;
+                                         $('#xeberdarliq').modal('show');
+                                          return Promise.reyect('error')
+                                    }
+                                  
+                                   sessionStorage.setItem("user", JSON.stringify(x));
+                                })
+                                .then(async ()=>{
+                                        const tokenResp = await fetch(tokenURL,
+                                        { 
+                                            method: "POST",
+                                            headers: {
+                                                'Accept': 'application/json',
+                                                'Content-Type': 'application/json'
+                                            },
+                                            body:JSON.stringify(tokenData)
+                                        });
+                                        //
+                                        if (tokenResp.status==200){
+                                            tokenResp.json().then(token=>{
+                                                window.location.href='/peshe/GINExam'.replace('&amp;','&');
+                                            })
+                                        }
+                                })
+                }
+            }
+            $('#xeberdarliq').on('hidden.bs.modal', function (e) {
+                //console.log(e);
+                // do something...
+            })
+</script>
+
+    <script>
+         function logout(){
+            sessionStorage.clear();
+            document.cookie = 'token=; Max-Age=0; path=/;'; //domain=' + location.hostname;
+            window.location.href='/peshe/GINExam'
+        }
+    </script>
+
+
+</body>
+</html>
