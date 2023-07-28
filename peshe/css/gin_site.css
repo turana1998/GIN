@@ -26,6 +26,7 @@
   
   body {
     margin-bottom: 60px;
+    line-height: 30px
   }
   
   .billboard-banner {
@@ -438,11 +439,17 @@
   .billboard-banner-content-box {
     --border-size: 3px;
     --border-angle: 0turn;
-    background-image: conic-gradient(from var(--border-angle), #213, #112 50%, #213), conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+    background-image: conic-gradient(from var(--border-angle), #213, #112 50%, #213), conic-gradient(from var(--border-angle), transparent 20%, #08f, rgba(0,0,0,.2));
     background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)), cover;
     background-position: center center;
     background-repeat: no-repeat;
-    animation: bg-spin 3s linear infinite;
+    padding: 2.5rem 60px;
+ }
+ .billboard-banner-content-box .content-h1{
+  color: #fff;
+ }
+ .billboard-banner-content-box .text-md{
+  color: #ffffffb3;
  }
   @keyframes bg-spin {
     to {
@@ -460,15 +467,20 @@
  
 
  .list-group-item{
-    background-image: conic-gradient(from var(--border-angle), #213, #112 50%, #213), conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
-    background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)), cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    color: #ffffffbf;
-    border: none;
-
+  background-image: conic-gradient(from var(--border-angle), #213, #112 50%, #213), conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+  background-size: calc(100% - (var(--border-size) * 2)) calc(100% - (var(--border-size) * 2)), cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #ffffffbf;
+  border: none;
+  padding: 2.5rem 60px;
  }
 
+ .list-group-item .fw-bold{
+ 
+    font-size: 26px;
+    color: #fff;
+ }
  .nav-tabs  .nav-link, .nav-tabs .nav-link.active {
   color: #fff;
   background-color: transparent; 
